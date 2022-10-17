@@ -106,6 +106,104 @@ public class firstTest extends WebDriver {
         assert loginPage.wrongLoginOrPasswordError();
     }
 
+    @Test
+    public void succesfullLoginTestWithEnter() {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("89379585734");
+        loginPage.enterPassword("Termokruzka22" + Keys.ENTER);
+//        loginPage.clickLogin();
+
+        HomePage homePage = new HomePage(driver);
+        assert homePage.atPage();
+    }
+
+    @Test
+    public void emptyLoginTestWithEnter()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("" + Keys.ENTER);
+//        loginPage.enterPassword("Termokruzka22");
+//        loginPage.clickLogin();
+
+        assert loginPage.emptyLoginError();
+    }
+
+    @Test
+    public void emptyPasswordTestWithEnter()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("89379585734");
+        loginPage.enterPassword("" + Keys.ENTER);
+//        loginPage.clickLogin();
+
+        assert loginPage.emptyPasswordError();
+    }
+
+    @Test
+    public void emptyLoginAndPasswordTestWithEnter()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("");
+        loginPage.enterPassword("" +  Keys.ENTER);
+//        loginPage.clickLogin();
+
+        assert loginPage.emptyLoginError();
+    }
+
+    @Test
+    public void wrongPasswordTestWithEnter()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("89379585734");
+        loginPage.enterPassword("123" + Keys.ENTER);
+//        loginPage.clickLogin();
+
+        assert loginPage.wrongLoginOrPasswordError();
+    }
+
+    @Test
+    public void wrongLoginTestWithEnter()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("8937958574");
+        loginPage.enterPassword("Termokruzka22" + Keys.ENTER);
+//        loginPage.clickLogin();
+
+        assert loginPage.wrongLoginOrPasswordError();
+    }
+
+    @Test
+    public void wrongLoginAndPasswordTestWithEtner()
+    {
+        driver.get("https://ok.ru/");
+        LoginPage loginPage = new LoginPage(driver);
+        assert loginPage.atPage();
+
+        loginPage.enterLogin("8937985734");
+        loginPage.enterPassword("123" + Keys.ENTER);
+//        loginPage.clickLogin();
+
+        assert loginPage.wrongLoginOrPasswordError();
+    }
+
 
 
 }
